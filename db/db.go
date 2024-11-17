@@ -3,12 +3,10 @@ package db
 import (
 	"database/sql"
 	"fmt"
+	"github.com/joho/godotenv"
+	_ "github.com/lib/pq"
 	"log"
 	"os"
-
-	"github.com/joho/godotenv"
-
-	_ "github.com/lib/pq"
 )
 
 var DB *sql.DB
@@ -23,8 +21,6 @@ func InitDB() {
 		os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_NAME"),
 		os.Getenv("DB_HOST"), os.Getenv("DB_PORT"),
 	)
-
-	//connStr := "host=localhost port=5432 user=postgres password=Subbu12@ dbname=postgres sslmode=disable"
 
 	fmt.Print("Connection :", connStr)
 

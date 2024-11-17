@@ -2,7 +2,6 @@ package services
 
 import (
 	"database/sql"
-	// "net/http"
 	"fmt"
 	"log"
 	"task-api/db"
@@ -15,10 +14,10 @@ func CreateTask(task *models.Task) error {
 
 	if len(task.Title) > 25 {
 		return fmt.Errorf("title cannot exceed 25 characters")
-	}else if task.Title == "" {
+	} else if task.Title == "" {
 		return fmt.Errorf("title should not be empty")
-        
-    }
+
+	}
 
 	var exists bool
 	err := db.DB.QueryRow("SELECT EXISTS(SELECT 1 FROM tasks WHERE title=$1)", task.Title).Scan(&exists)
